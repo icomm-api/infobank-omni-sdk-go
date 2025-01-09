@@ -3,8 +3,8 @@ package report
 import (
 	"net/http"
 
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/core"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/core"
 )
 
 type ReportManager struct {

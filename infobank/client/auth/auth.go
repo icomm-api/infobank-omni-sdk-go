@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/core"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/core"
 )
 
 const (

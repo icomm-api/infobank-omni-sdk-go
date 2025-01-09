@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"reflect"
 
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/core"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/core"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
 )
 
 const (

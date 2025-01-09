@@ -1,6 +1,6 @@
 package util
 
-import "github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
+import "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
 
 func MakeButtonURL(name string, url string) send.RcsButton {
 	types := send.ButtonURL

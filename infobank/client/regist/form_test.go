@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
 )
 
 func TestFormRegister_RegisterForm(t *testing.T) {

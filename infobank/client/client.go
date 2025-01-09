@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"reflect"
 
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/auth"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/regist"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/report"
-	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/auth"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/regist"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/report"
+	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
 )
 
 type OmniClient struct {
