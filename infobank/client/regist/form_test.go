@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"omni_sdk_go/infobank/client/send"
 	"testing"
+
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
 )
 
 func TestFormRegister_RegisterForm(t *testing.T) {

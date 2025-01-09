@@ -3,10 +3,11 @@ package regist
 import (
 	"bytes"
 	"net/http"
-	"omni_sdk_go/infobank"
-	"omni_sdk_go/infobank/client/core"
-	"omni_sdk_go/infobank/client/send"
 	"reflect"
+
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank"
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/core"
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
 )
 
 const (

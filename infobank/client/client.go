@@ -4,11 +4,12 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"omni_sdk_go/infobank/client/auth"
-	"omni_sdk_go/infobank/client/regist"
-	"omni_sdk_go/infobank/client/report"
-	"omni_sdk_go/infobank/client/send"
 	"reflect"
+
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/auth"
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/regist"
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/report"
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
 )
 
 type OmniClient struct {

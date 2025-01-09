@@ -2,8 +2,9 @@ package send
 
 import (
 	"net/http"
-	"omni_sdk_go/infobank/client/core"
 	"reflect"
+
+	"github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/core"
 )
 
 const (

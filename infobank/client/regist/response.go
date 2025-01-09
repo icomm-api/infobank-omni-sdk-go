@@ -1,6 +1,6 @@
 package regist
 
-import "omni_sdk_go/infobank/client/send"
+import "github.com/icomm-api/infobank-omni-sdk-go.git/infobank/client/send"
 
 type FileResponse struct {
 	Code   string            `json:"code"`
