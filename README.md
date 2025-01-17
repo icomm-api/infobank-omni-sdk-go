@@ -9,7 +9,6 @@ infobank omni api sdk go 입니다.
 - [OMNI API](https://infobank-guide.gitbook.io/omni_api)
 - [시작하기](#시작하기-getting-started)
 - [사용법](#사용법-usage)
-  - [토큰 발급](#토큰-발급)
   - [파일 업로드](#파일-업로드)
   - [FORM 등록](#form-등록)
   - [전송](#전송)
@@ -26,47 +25,20 @@ go get github.com/icomm-api/infobank-omni-sdk-go
 
 ## 사용법 (Usage)
 
-### 토큰 발급
-```go
-import (
-    "fmt"
-    "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/auth"
-)
-
-func main() {
-
-    clientId := "test"
-    password := "1234"
-    
-    authClient := auth.NewAuthenticator(nil, clientId, password)
-    err := authClient.Init()
-    if err != nil {
-        fmt.Println("err :", err)
-    } else {
-        token := authClient.GetToken()
-        fmt.Println(*token)
-    }
-}
-```
-
-
 ### File 업로드
 ```go
 import (
-    "fmt"
-    "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/regist"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank/models"
 )
 
 func main() {
-    fileUploader := regist.NewFileUploader("input-your-token", nil)
-    serviceType := FILE_SERVICE_TYPE_MMS
-    response, err := fileUploader.UploadFile(&serviceType, nil, "D:\\", "2.jpg")
-
-    if err != nil {
-        fmt.Println("err :", err)
-	} else {
-        fmt.Println(response)
-    }
+    omniClient, err := infobank.NewOmniClient(Url, clientId, clientPassword)
+    
+    serviceType := models.FILE_SERVICE_TYPE_MMS
+    msgType := ""
+	
+    res, err := omniClient.File.UploadFile(serviceType, serviceType, "./image3.jpg")
 }
 ```
 
@@ -74,28 +46,25 @@ func main() {
 ### FORM 등록
 ```go
 import (
-    "encoding/json"
-    "errors"
-    "fmt"
-    "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/regist"
-    "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank/models"
 )
 
 func mian() {
-    formRegister := regist.NewFormRegister("input-your-token", nil)
-    msg := send.NewOmniSmsBuilder().Text("text").From("01012345678").From("01012345678").Build()
-    form := NewMessageFormBuilder().Message(msg).Build()
-    apiResponse, err := formRegister.RegisterForm(form)
+    omniClient, err := infobank.NewOmniClient(Url, clientId, clientPassword)
     
-	if err != nil {
-        fmt.Println("err :", err)
-    } else {
-        if apiResponse.Code != "A000" {
-            fmt.Println("err :", err)
-        } else {
-            fmt.Println(apiResponse.Result, apiResponse.Code, *apiResponse.Data.FormId, *apiResponse.Data.Expired)
-        }
-    }
+    message := models.MessageForm{
+		MessageForm: []models.OmniMessage{
+			{
+				SMS: &models.OmniSMS{
+					From: "<발신번호>",
+					Text: "<Text>",
+				},
+			},
+		},
+	}
+
+    res, err := omniClient.Form.RegisterForm(message)
 }
 ```
 
@@ -104,48 +73,33 @@ func mian() {
 package send
 
 import (
-	"errors"
-	"fmt"
-	"github.com/icomm-api/infobank-omni-sdk-go/infobank/client/send"
+	"github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank/models"
 )
 
 func main() {
-
-	smsSender := send.NewSmsSender("input-your-token", nil)
-	message := send.NewSmsBuilder().From("0310000000").To("01012345618").Text("omni-sdk-go text").Ref("omni-sdk-go ref").OriginCID("0000").Build()
-
-	apiResponse, err := smsSender.SendMessage(&message)
-
-	if err != nil {
-		fmt.Println("err :", err)
-		return
+	omniClient, err := infobank.NewOmniClient(Url, clientId, clientPassword)
+	
+    mms := models.MMS{
+		From:    "<발신번호>",
+		To:      "<수신번호",
+		Text:    "<Text>",
 	}
 
-	if apiResponse.Code != "A000" {
-		fmt.Println("err : ", errors.New(apiResponse.Result))
-		return
-	}
-	fmt.Println(*apiResponse)
+	res, err := omniClient.SMS.SendMessage(&mms)
 }
 ```
 
 ### 리포트
 ```go
 import (
-    "encoding/json"
-    "fmt"
-    "github.com/icomm-api/infobank-omni-sdk-go/infobank/client/report"
+    "github.com/icomm-api/infobank-omni-sdk-go/pkg/infobank"
 )
 
 func main() {
-    reportManager := report.NewReportManager("input-your-token", nil)
-    apiResponse, err := reportManager.InquiryReport("20230619081619396PRDR1SM92760200")
-    if err != nil {
-        fmt.Println("err :", err)
-    } else {
-        data, _ := json.Marshal(apiResponse.Data)
-        fmt.Println(apiResponse.Code, apiResponse.Data, string(data))
-    }
+    omniClient, err := infobank.NewOmniClient(Url, clientId, clientPassword)
+    msgKey := "<msgKey>"
+	res, err := omniClient.Report.InquiryReport(msgKey)
 }
 ```
 
