@@ -1,4 +1,4 @@
-# infobank-omni-sdk-go v1.0.0
+# infobank-omni-sdk-go v1.1.0
 ---
 [![SDK Documentation](https://img.shields.io/badge/SDK-Documentation-blue)]() [![Migration Guide](https://img.shields.io/badge/Migration-Guide-blue)]() [![API Reference](https://img.shields.io/badge/api-reference-blue.svg)]() [![Apache V2 License](https://img.shields.io/badge/license-Apache%20V2-blue.svg)]()
 
@@ -38,7 +38,7 @@ func main() {
     serviceType := models.FILE_SERVICE_TYPE_MMS
     msgType := ""
 	
-    res, err := omniClient.File.UploadFile(serviceType, serviceType, "./image3.jpg")
+    res, err := omniClient.File.UploadFile(serviceType, msgType, "<이미지 경로>")
 }
 ```
 
