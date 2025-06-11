@@ -15,10 +15,19 @@ type FriendTalkAttachment struct {
 	Video    *KakaoVideo    `json:"video,omitempty"`
 }
 
+type BrandMessageAttachment struct {
+	Button   []KakaoButton  `json:"button,omitempty"`
+	Image    *KakaoImage    `json:"image,omitempty"`
+	Item     *KakaoItemInfo `json:"item,omitempty"`
+	Coupon   *KakaoCoupon   `json:"coupon,omitempty"`
+	Commerce *KakaoCommerce `json:"commerce,omitempty"`
+	Video    *KakaoVideo    `json:"video,omitempty"`
+}
+
 type KakaoCoupon struct {
 	Title         string `json:"title"`
 	Description   string `json:"description"`
-	UrlPC         string `json:"url_pc,omitempty"`
+	UrlPC         string `json:"urlPc,omitempty"`
 	UrlMobile     string `json:"urlMobile,omitempty"`
 	SchemeIOS     string `json:"schemeIOS,omitempty"`
 	SchemeAndroid string `json:"schemeAndroid,omitempty"`
@@ -26,15 +35,15 @@ type KakaoCoupon struct {
 
 type KakaoCommerce struct {
 	Title         string `json:"title"`
-	RegularPrice  int    `json:"regular_price"`
-	DiscountPrice int    `json:"discount_price,omitempty"`
-	DiscountRate  int    `json:"discount_rate,omitempty"`
-	DiscountFixed int    `json:"discount_fixed,omitempty"`
+	RegularPrice  int    `json:"regularPrice"`
+	DiscountPrice int    `json:"discountPrice,omitempty"`
+	DiscountRate  int    `json:"discountRate,omitempty"`
+	DiscountFixed int    `json:"discountFixed,omitempty"`
 }
 
 type KakaoVideo struct {
-	VideoUrl     string `json:"video_url"`
-	ThumbnailUrl string `json:"thumbnail_url,omitempty"`
+	VideoUrl     string `json:"videoUrl"`
+	ThumbnailUrl string `json:"thumbnailUrl,omitempty"`
 }
 
 type KakaoSuplement struct {
@@ -64,10 +73,10 @@ type KakaoItem struct {
 	Title         string `json:"title,omitempty"`
 	Description   string `json:"description,omitempty"`
 	ImgUrl        string `json:"imgUrl,omitempty"`
-	UrlPc         string `json:"url_pc,omitempty"`
-	UrlMobile     string `json:"url_mobile"`
-	SchemeIos     string `json:"scheme_ios,omitempty"`
-	SchemeAndroid string `json:"scheme_android,omitempty"`
+	UrlPc         string `json:"urlPc,omitempty"`
+	UrlMobile     string `json:"urlMobile"`
+	SchemeIos     string `json:"schemeIos,omitempty"`
+	SchemeAndroid string `json:"schemeAndroid,omitempty"`
 }
 
 type KakaoImage struct {
@@ -79,27 +88,34 @@ type KakaoCarouselHead struct {
 	Header        string `json:"header,omitempty"`
 	Content       string `json:"content,omitempty"`
 	ImageUrl      string `json:"imageUrl,omitempty"`
-	UrlPc         string `json:"url_pc,omitempty"`
-	UrlMobile     string `json:"url_mobile"`
-	SchemeIos     string `json:"scheme_ios,omitempty"`
-	SchemeAndroid string `json:"scheme_android,omitempty"`
+	UrlPc         string `json:"urlPc,omitempty"`
+	UrlMobile     string `json:"urlMobile"`
+	SchemeIos     string `json:"schemeIos,omitempty"`
+	SchemeAndroid string `json:"schemeAndroid,omitempty"`
 }
 
 type KakaoCarouselList struct {
-	Header            string                `json:"header,omitempty"`
-	Message           string                `json:"message,omitempty"`
-	AdditionalContent string                `json:"additional_content,omitempty"`
-	Attachment        *FriendTalkAttachment `json:"attachment,omitempty"`
+	Header            string      `json:"header,omitempty"`
+	Message           string      `json:"message,omitempty"`
+	AdditionalContent string      `json:"additionalContent,omitempty"`
+	Attachment        interface{} `json:"attachment,omitempty"`
 }
 
 type KakaoCarouselTail struct {
-	UrlPc         string `json:"url_pc,omitempty"`
-	UrlMobile     string `json:"url_mobile,omitempty"`
-	SchemeIos     string `json:"scheme_ios,omitempty"`
-	SchemeAndroid string `json:"scheme_android,omitempty"`
+	UrlPc         string `json:"urlPc,omitempty"`
+	UrlMobile     string `json:"urlMobile,omitempty"`
+	SchemeIos     string `json:"schemeIos,omitempty"`
+	SchemeAndroid string `json:"schemeAndroid,omitempty"`
 }
 type KakaoCarousel struct {
 	Head *KakaoCarouselHead  `json:"head,omitempty"`
 	List []KakaoCarouselList `json:"list,omitempty"`
 	Tail *KakaoCarouselTail  `json:"tail,omitempty"`
+}
+
+type KakaoLink struct {
+	UrlMobile     string `json:"urlMobile,omitempty"`
+	UrlPc         string `json:"urlPc,omitempty"`
+	SchemeIos     string `json:"schemeIos,omitempty"`
+	SchemeAndroid string `json:"schemeAndroid,omitempty"`
 }

@@ -10,6 +10,7 @@ type Alimtalk struct {
 	TemplateCode string        `json:"templateCode" validate:"required"`
 	Title        string        `json:"title,omitempty"`
 	Header       string        `json:"header,omitempty"`
+	Link         *KakaoLink    `json:"link,omitempty"`
 	Button       []KakaoButton `json:"button,omitempty" validate:"dive"`
 	Fallback     *Fallback     `json:"fallback,omitempty"`
 	Ref          string        `json:"ref,omitempty"`

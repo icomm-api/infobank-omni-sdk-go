@@ -17,11 +17,12 @@ type Destination struct {
 }
 
 type OmniMessage struct {
-	SMS        *OmniSMS        `json:"sms,omitempty"`
-	MMS        *OmniMMS        `json:"mms,omitempty"`
-	RCS        *OmniRCS        `json:"rcs,omitempty"`
-	AlimTalk   *OmniAlimTalk   `json:"alimtalk,omitempty"`
-	FriendTalk *OmniFriendTalk `json:"friendtalk,omitempty"`
+	SMS          *OmniSMS          `json:"sms,omitempty"`
+	MMS          *OmniMMS          `json:"mms,omitempty"`
+	RCS          *OmniRCS          `json:"rcs,omitempty"`
+	AlimTalk     *OmniAlimTalk     `json:"alimtalk,omitempty"`
+	FriendTalk   *OmniFriendTalk   `json:"friendtalk,omitempty"`
+	BrandMessage *OmniBrandMessage `json:"brandmessage,omitempty"`
 }
 
 type OmniSMS struct {
@@ -63,6 +64,7 @@ type OmniAlimTalk struct {
 	TemplateCode string              `json:"templateCode" validate:"required"`
 	KakaoMsgType KakaoMsgType        `json:"msgType" validate:"required"`
 	Title        string              `json:"title,omitempty"`
+	Link         *KakaoLink          `json:"link,omitempty"`
 	Header       string              `json:"header,omitempty"`
 	Attachment   *AlimTalkAttachment `json:"attachment,omitempty"`
 	Price        string              `json:"price,omitempty"`
@@ -71,17 +73,44 @@ type OmniAlimTalk struct {
 }
 
 type OmniFriendTalk struct {
-	SenderKey        string                `json:"senderKey" validate:"required"`
-	KakaoMsgType     KakaoMsgType          `json:"msgType" validate:"required"`
-	Text             string                `json:"text,omitempty"`
-	Attachment       *FriendTalkAttachment `json:"attachment,omitempty"`
-	AdFlag           string                `json:"adFlag,omitempty"`
-	AddtionalContent string                `json:"addtionalContent,omitempty"`
-	Adult            string                `json:"adult,omitempty"`
-	Header           string                `json:"header,omitempty"`
-	Carousel         *KakaoCarousel        `json:"carousel,omitempty"`
-	GroupTagKey      string                `json:"groupTagKey,omitempty"`
-	PushAlarm        string                `json:"pushAlarm,omitempty"`
+	SenderKey         string                `json:"senderKey" validate:"required"`
+	KakaoMsgType      KakaoMsgType          `json:"msgType" validate:"required"`
+	Text              string                `json:"text,omitempty"`
+	Attachment        *FriendTalkAttachment `json:"attachment,omitempty"`
+	AdFlag            string                `json:"adFlag,omitempty"`
+	AdditionalContent string                `json:"additionalContent,omitempty"`
+	Adult             string                `json:"adult,omitempty"`
+	Header            string                `json:"header,omitempty"`
+	Carousel          *KakaoCarousel        `json:"carousel,omitempty"`
+	GroupTagKey       string                `json:"groupTagKey,omitempty"`
+	PushAlarm         string                `json:"pushAlarm,omitempty"`
+}
+
+type OmniBrandMessage struct {
+	SenderKey              string                  `json:"senderKey" validate:"required"`
+	SendType               KakaoSendType           `json:"sendType" validate:"required"`
+	KakaoMsgType           KakaoMsgType            `json:"msgType" validate:"required"`
+	Text                   string                  `json:"text,omitempty"`
+	Carousel               *KakaoCarousel          `json:"carousel,omitempty"`
+	Attachment             *BrandMessageAttachment `json:"attachment,omitempty"`
+	Header                 string                  `json:"header,omitempty"`
+	Targeting              string                  `json:"targeting,omitempty"`
+	TemplateCode           string                  `json:"templateCode,omitempty"`
+	AdditionalContent      string                  `json:"additionalContent,omitempty"`
+	GroupTagKey            string                  `json:"groupTagKey,omitempty"`
+	Adult                  string                  `json:"adult,omitempty"`
+	PushAlarm              string                  `json:"pushAlarm,omitempty"`
+	AdFlag                 string                  `json:"adFlag,omitempty"`
+	MessageVariable        map[string]interface{}  `json:"messageVariable,omitempty"`
+	ButtonVariable         map[string]interface{}  `json:"buttonVariable,omitempty"`
+	CouponVariable         map[string]interface{}  `json:"couponVariable,omitempty"`
+	ImageVariable          map[string]interface{}  `json:"imageVariable,omitempty"`
+	VideoVariable          map[string]interface{}  `json:"videoVariable,omitempty"`
+	CommerceVariable       map[string]interface{}  `json:"commerceVariable,omitempty"`
+	CarouselVariable       map[string]interface{}  `json:"carouselVariable,omitempty"`
+	OriginCID              string                  `json:"originCID,omitempty"`
+	UnsubscribePhoneNumber string                  `json:"unsubscribePhoneNumber,omitempty"`
+	UnsubscribeAuthNumber  string                  `json:"unsubscribeAuthNumber,omitempty"`
 }
 
 func (m *Omni) Validate() error {

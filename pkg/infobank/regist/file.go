@@ -23,7 +23,7 @@ type FileUploader struct {
 	Client *core.HttpClient
 }
 
-func (f *FileUploader) UploadFile(serviceType models.FileServiceTypeEnum, msgType models.FileMsgTypeEnum, filePath string) (*models.FileResponse, error) {
+func (f *FileUploader) UploadFile(serviceType models.FileServiceTypeEnum, msgType models.FileMsgTypeEnum, subType string, filePath string) (*models.FileResponse, error) {
 	if len(serviceType) == 0 {
 		return nil, errors.New("serviceType is required")
 	}
@@ -31,6 +31,10 @@ func (f *FileUploader) UploadFile(serviceType models.FileServiceTypeEnum, msgTyp
 	subPath := fileSubPath + "/" + string(serviceType)
 	if len(msgType) > 0 {
 		subPath += "/" + string(msgType)
+	}
+
+	if len(subType) > 0 {
+		subPath += "/" + subType
 	}
 
 	file, err := os.Open(filePath)

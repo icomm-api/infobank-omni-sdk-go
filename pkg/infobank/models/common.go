@@ -16,6 +16,11 @@ const (
 	FILE_MSG_TYPE_FRIENDTALK_ITEMLIST_IMAGE          FileMsgTypeEnum = "FL"
 	FILE_MSG_TYPE_FRIENDTALK_CAROUSEL_IMAGE          FileMsgTypeEnum = "FC"
 	FILE_MSG_TYPE_FRIENDTALK_CAROUSEL_COMMERCE_IMAGE FileMsgTypeEnum = "FA"
+	FILE_MSG_TYPE_BRANDMESSAGE_DEFAULT               FileMsgTypeEnum = "default"
+	FILE_MSG_TYPE_BRANDMESSAGE_WIDE                  FileMsgTypeEnum = "wide"
+	FILE_MSG_TYPE_BRANDMESSAGE_WIDEITEMLIST          FileMsgTypeEnum = "wideItemList"
+	FILE_MSG_TYPE_BRANDMESSAGE_CAROUSELFEED          FileMsgTypeEnum = "carouselFeed"
+	FILE_MSG_TYPE_BRANDMESSAGE_CAROUSELCOMMERCE      FileMsgTypeEnum = "carouselCommerce "
 )
 
 type FallbackServiceType string
@@ -28,16 +33,24 @@ const (
 type KakaoMsgType string
 
 const (
-	MSGTYPE_ALIMTALK                     KakaoMsgType = "AT"
-	MSGTYPE_ALIMTALK_IMAGE               KakaoMsgType = "AI"
-	MSGTYPE_FRIENDTALK                   KakaoMsgType = "FT"
-	MSGTYPE_FRIENDTALK_IMAGE             KakaoMsgType = "FI"
-	MSGTYPE_FRIENDTALK_WIDE_IMAGE        KakaoMsgType = "FW"
-	MSGTYPE_FRIENDTALK_CAROUSEL          KakaoMsgType = "FC"
-	MSGTYPE_FRIENDTALK_ITEMLIST          KakaoMsgType = "FL"
-	MSGTYPE_FRIENDTALK_COMMERCE          KakaoMsgType = "FM"
-	MSGTYPE_FRIENDTALK_CAROUSEL_COMMERCE KakaoMsgType = "FA"
-	MSGTYPE_FRIENDTALK_VIDIO_PREMIUM     KakaoMsgType = "FP"
+	MSGTYPE_ALIMTALK                       KakaoMsgType = "AT"
+	MSGTYPE_ALIMTALK_IMAGE                 KakaoMsgType = "AI"
+	MSGTYPE_FRIENDTALK                     KakaoMsgType = "FT"
+	MSGTYPE_FRIENDTALK_IMAGE               KakaoMsgType = "FI"
+	MSGTYPE_FRIENDTALK_WIDE_IMAGE          KakaoMsgType = "FW"
+	MSGTYPE_FRIENDTALK_CAROUSEL            KakaoMsgType = "FC"
+	MSGTYPE_FRIENDTALK_ITEMLIST            KakaoMsgType = "FL"
+	MSGTYPE_FRIENDTALK_COMMERCE            KakaoMsgType = "FM"
+	MSGTYPE_FRIENDTALK_CAROUSEL_COMMERCE   KakaoMsgType = "FA"
+	MSGTYPE_FRIENDTALK_VIDIO_PREMIUM       KakaoMsgType = "FP"
+	MSGTYPE_BRANDMESSAGE                   KakaoMsgType = "FT"
+	MSGTYPE_BRANDMESSAGE_IMAGE             KakaoMsgType = "FI"
+	MSGTYPE_BRANDMESSAGE_WIDE_IMAGE        KakaoMsgType = "FW"
+	MSGTYPE_BRANDMESSAGE_CAROUSEL          KakaoMsgType = "FC"
+	MSGTYPE_BRANDMESSAGE_ITEMLIST          KakaoMsgType = "FL"
+	MSGTYPE_BRANDMESSAGE_COMMERCE          KakaoMsgType = "FM"
+	MSGTYPE_BRANDMESSAGE_CAROUSEL_COMMERCE KakaoMsgType = "FA"
+	MSGTYPE_BRANDMESSAGE_VIDIO_PREMIUM     KakaoMsgType = "FP"
 )
 
 type KakaoButtonType string
@@ -66,6 +79,13 @@ const (
 	ButtonCOMT     RcsButtonType = "COM_T"
 	ButtonCOMV     RcsButtonType = "COM_V"
 	ButtonDial     RcsButtonType = "DIAL"
+)
+
+type KakaoSendType string
+
+const (
+	BRANDMESSAGE_SENDTYPE_BASIC KakaoSendType = "basic"
+	BRANDMESSAGE_SENDTYPE_FREE  KakaoSendType = "free"
 )
 
 type SimpleSendResponse struct {
@@ -113,6 +133,7 @@ type Report struct {
 	ReportText  string `json:"reportText,omitempty"`
 	ReportTime  string `json:"reportTime"`
 	SendTime    string `json:"sendTime"`
+	UserType    string `json:"userType"`
 	Carrier     string `json:"carrier,omitempty"`
 	Ref         string `json:"ref,omitempty"`
 	ResCnt      string `json:"resCnt,omitempty"`

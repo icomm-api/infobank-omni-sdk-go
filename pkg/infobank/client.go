@@ -22,6 +22,7 @@ type OmniClient struct {
 	RCS              rcs.RcsSender
 	AlimTalk         kakao.AlimtalkSender
 	FriendTalk       kakao.FriendtalkSender
+	BrandMessage     kakao.BrandMessageSender
 	Omni             omni.OmniSender
 	Report           report.ReportManager
 	File             regist.FileUploader
@@ -67,6 +68,12 @@ func NewOmniClient(url string, clientId string, password string) (*OmniClient, e
 	}
 
 	c.FriendTalk = kakao.FriendtalkSender{
+		Client: &core.HttpClient{
+			HttpClient: &http.Client{},
+		},
+	}
+
+	c.BrandMessage = kakao.BrandMessageSender{
 		Client: &core.HttpClient{
 			HttpClient: &http.Client{},
 		},
